@@ -26,13 +26,13 @@ mysql -u uparser -p dbparser < LogDDL.sql
 
 # 3. How to run the application
 
-3.1 First start
+3.1 The first start
 
 java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --accesslog=/path/to/file --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=5
 
 You can not specify the other parameters except of --accesslog. In this case input log file will be parsed and load to database, but the report will not be created.
 
-3.2 Second start
+3.2 The second start
 
 The first option for creating "hourly" report (please, see the details below):
 java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.01:00:00 --duration=hourly --threshold=5
