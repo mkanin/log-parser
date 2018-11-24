@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ef</groupId>
+  <artifactId>parser</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>parser</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <jdk.version>1.8</jdk.version>
+    <org.springframework-version>4.3.11.RELEASE</org.springframework-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <org.slf4j-version>1.7.25</org.slf4j-version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit-dep</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Spring -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${org.springframework-version}</version>
+      <scope>test</scope>
+	</dependency>
+	<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework-version}</version>
+	</dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
+    
+    <!-- Hibernate -->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.3.5.Final</version>
+    </dependency>
+
+    <!-- MySQL -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.47</version>
+    </dependency>
+    
+    <!-- Logging -->
+	<dependency>
+	  <groupId>org.slf4j</groupId>
+	  <artifactId>slf4j-api</artifactId>
+	  <version>${org.slf4j-version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.slf4j</groupId>
+	  <artifactId>jcl-over-slf4j</artifactId>
+	  <version>${org.slf4j-version}</version>
+	  <scope>runtime</scope>
+	</dependency>
+	<dependency>
+	  <groupId>org.slf4j</groupId>
+	  <artifactId>slf4j-log4j12</artifactId>
+	  <version>${org.slf4j-version}</version>
+	  <scope>runtime</scope>
+	</dependency>
+	<dependency>
+	  <groupId>log4j</groupId>
+	  <artifactId>log4j</artifactId>
+	  <version>1.2.17</version>
+	  <exclusions>
+	    <exclusion>
+	      <groupId>javax.mail</groupId>
+	      <artifactId>mail</artifactId>
+		</exclusion>
+		<exclusion>
+		  <groupId>javax.jms</groupId>
+		  <artifactId>jms</artifactId>
+		</exclusion>
+		<exclusion>
+		  <groupId>com.sun.jdmk</groupId>
+		  <artifactId>jmxtools</artifactId>
+		</exclusion>
+		<exclusion>
+		  <groupId>com.sun.jmx</groupId>
+		  <artifactId>jmxri</artifactId>
+		</exclusion>
+	  </exclusions>
+	  <scope>compile</scope>
+	</dependency>    
+  </dependencies>
+  
+  <build>
+	<finalName>parser</finalName>
+	<plugins>
+      <!-- Set a compiler level -->
+      <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+	  <version>2.3.2</version>
+	  <configuration>
+        <source>${jdk.version}</source>
+        <target>${jdk.version}</target>
+      </configuration>
+      </plugin>
+
+      <!-- Maven Assembly Plugin -->
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>3.1.0</version>
+		<configuration>
+          <!-- get all project dependencies -->
+          <descriptorRefs>
+		    <descriptorRef>jar-with-dependencies</descriptorRef>
+		  </descriptorRefs>
+          <!-- MainClass in mainfest make a executable jar -->
+	      <archive>
+            <manifest>
+			  <mainClass>com.ef.Parser</mainClass>
+            </manifest>
+		  </archive>
+		</configuration>
+		<executions>
+          <execution>
+	        <id>make-assembly</id>
+            <!-- bind to the packaging phase -->
+			<phase>package</phase> 
+			<goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+		</executions>
+      </plugin>
+	</plugins>
+  </build>
+  
+  <profiles>
+    <profile>
+        <id>parser</id>
+    </profile>
+  </profiles>
+</project>

@@ -1,0 +1,52 @@
+1. Select all records after loading file
+
+SELECT 
+    log.log_id, log.ip_address, log.log_number 
+FROM 
+    t_log log
+WHERE 
+    log.log_number = (SELECT MAX(log_number) FROM t_log);
+
+2. If we want to select with additional parameters
+
+2.1 The first query for duration=hourly
+
+SELECT
+    log.ip_address, log.log_number
+FROM 
+    t_log log  
+WHERE 
+    log.request_time >= "2017-01-01 15:00:00" AND log.request_time < "2017-01-01 16:00:00" AND
+    log.log_number = (SELECT MAX(log_number) FROM t_log) 
+GROUP BY
+    log.ip_address
+HAVING 
+    COUNT(log.ip_address) > 200;
+
+2.2 The second query for duration=daily
+
+SELECT
+    log.ip_address, log.log_number
+FROM 
+    t_log log  
+WHERE 
+    log.request_time >= "2017-01-01 00:00:00" AND log.request_time < "2017-01-02 00:00:00" AND
+    log.log_number = (SELECT MAX(log_number) FROM t_log) 
+GROUP BY
+    log.ip_address
+HAVING 
+    COUNT(log.ip_address) > 500;
+
+3. Select the last report
+
+SELECT 
+    report.report_id, log.ip_address, report.start_date, report.duration, report.report_comment, log.log_number, report.report_number
+FROM 
+    t_report report
+INNER JOIN 
+    t_log_report_detail log_report_detail ON report.report_id = log_report_detail.report_id 
+INNER JOIN 
+    t_log log ON log_report_detail.log_id = log.log_id
+WHERE 
+    report.report_number = (SELECT MAX(report_number) FROM t_report);
+  
