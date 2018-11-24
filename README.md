@@ -53,5 +53,6 @@ Parameters:
 
 --duration  - the period of time for creating the end date (except border). It might be "hourly" by default or "daily". 
               You do not have to specify this parameter. In this case duraion will be "hourly".
+
 --threshold - the number of time which an ip address required to server during particular period of time that is defined by --startDate and --duration. 
               If the number of requests is more than this parameter, the ip address will be include to the report and saved to database.  
