@@ -44,7 +44,7 @@ java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startD
 
 The second option for creating "daily" report (please, see the details below):
 
-java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.00:00:00 --duration=daily --threshold=2
+java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.00:00:00 --duration=daily --threshold=1
 
 
 Parameters:
