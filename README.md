@@ -38,10 +38,12 @@ You can not specify the other parameters except of --accesslog. In this case inp
 3.2 The second start
 
 The first option for creating "hourly" report (please, see the details below):
+
 java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.01:00:00 --duration=hourly --threshold=5
 
 
 The second option for creating "daily" report (please, see the details below):
+
 java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.01:00:00 --duration=daily --threshold=20
 
 
