@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class DateUtilImpl implements DateUtil {
   
-  private final String FORMAT_DATE = "yyyy-MM-dd hh:mm:ss.SSS";
+  private final String FORMAT_DATE = "yyyy-MM-dd hh:mm:ss";
   
   @Override
   public Date convertStringToDate(String str) throws ParseException {

@@ -31,7 +31,7 @@ mysql -u uparser -p dbparser < LogDDL.sql
 
 3.1 The first start
 
-java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --accesslog=/path/to/file --startDate=2017-01-01.13:00:00 --duration=hourly --threshold=5
+java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --accesslog=/path/to/file --startDate=2018-07-01.00:00:00 --duration=hourly --threshold=3
 
 You can not specify the other parameters except of --accesslog. In this case input log file will be parsed and load to database, but the report will not be created.
 
@@ -39,19 +39,19 @@ You can not specify the other parameters except of --accesslog. In this case inp
 
 The first option for creating "hourly" report (please, see the details below):
 
-java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.01:00:00 --duration=hourly --threshold=5
+java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.00:00:00 --duration=hourly --threshold=3
 
 
 The second option for creating "daily" report (please, see the details below):
 
-java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.01:00:00 --duration=daily --threshold=20
+java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --startDate=2018-07-01.00:00:00 --duration=daily --threshold=2
 
 
 Parameters:
 
 --startDate - the date which the report created from
 
---duration - the period of time for creating the end date (except border). It might be "hourly" by default or "daily". You do not have to specify this parameter.
-             In this case duration will be "hourly".
---threshold - the number of time which an ip address required to server during particular period of time that is defined by --startDate and --duration. If the number 
-              of requests is more than or equals this parameter, the ip address will be include to the report and saved to database.  
+--duration  - the period of time for creating the end date (except border). It might be "hourly" by default or "daily". 
+              You do not have to specify this parameter. In this case duraion will be "hourly".
+--threshold - the number of time which an ip address required to server during particular period of time that is defined by --startDate and --duration. 
+              If the number of requests is more than this parameter, the ip address will be include to the report and saved to database.  
