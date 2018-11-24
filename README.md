@@ -3,7 +3,7 @@ This is a tool for parsing log files from a web server
 
 # 1. Where you can find the files
 
-1.1 Jar file with dependencies you can find in the folder /target after the project building using Apache Maven 
+1.1 Jar file with dependencies you can find in the folder /target after the project was builded using Apache Maven 
 
 1.2 Source code in the folder src/ 
 
