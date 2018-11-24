@@ -33,7 +33,7 @@ mysql -u uparser -p dbparser < LogDDL.sql
 
 java -cp "parser-jar-with-dependencies.jar" com.mkanin.logparser.Parser --accesslog=/path/to/file --startDate=2018-07-01.00:00:00 --duration=hourly --threshold=3
 
-You can not specify the other parameters except of --accesslog. In this case input log file will be parsed and load to database, but the report will not be created.
+You do not have to specify the other parameters except of --accesslog. In this case input log file will be parsed and load to database, but the report will not be created.
 
 3.2 The second start
 
