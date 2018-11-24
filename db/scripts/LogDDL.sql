@@ -1,3 +1,5 @@
+/* Copyright (c) 2018 Mikhail Kanin */
+
 DROP TABLE IF EXISTS t_log_report_detail;
 DROP TABLE IF EXISTS t_report;
 DROP TABLE IF EXISTS t_log;
