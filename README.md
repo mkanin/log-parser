@@ -5,11 +5,11 @@ This is a tool for parsing log files from a web server
 
 1.1 Jar file with dependencies you can find in the folder /target after the project building using Apache Maven 
 
-1.2 Source code in the folder /src 
+1.2 Source code in the folder src/ 
 
-1.3 MySQL schema in the file /db/scripts/LogDDL.sql 
+1.3 MySQL schema in the file db/scripts/LogDDL.sql 
 
-1.4 SQL queries in the file /db/queries/queries.txt 
+1.4 SQL queries in the file db/queries/queries.txt 
 
 
 # 2. The important steps before running the application
