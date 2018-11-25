@@ -29,7 +29,6 @@ import com.mkanin.logparser.util.file.StringFileReaderImpl;
  *
  */
 @Service("logFileService")
-@Repository
 public class LogFileServiceImpl implements LogFileService {
   private final Logger logger = LoggerFactory.getLogger(LogFileServiceImpl.class);
   
