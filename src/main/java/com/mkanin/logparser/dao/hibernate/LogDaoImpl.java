@@ -23,7 +23,6 @@ import com.mkanin.logparser.model.Log;
  *
  */
 @Repository("logDao")
-@Transactional
 public class LogDaoImpl implements LogDao {
   private SessionFactory sessionFactory;
 
@@ -37,14 +36,12 @@ public class LogDaoImpl implements LogDao {
   }
   
   @Override
-  @Transactional(readOnly = true)
   public Integer findMaxLogNumber() {
     Query maxLogNumberQuery = sessionFactory.getCurrentSession().getNamedQuery("log.findMaxLogNumber");
     return (Integer) maxLogNumberQuery.getSingleResult();
   }
   
   @Override
-  @Transactional(readOnly = true)
   public List<Log> findIpsByTimeAndThreshold(Date startDate, Date endDate, Integer threshold) {
     
     Long th = new Long(threshold);
@@ -54,13 +51,13 @@ public class LogDaoImpl implements LogDao {
   }
   
   @Override
-  @Transactional(readOnly = true)
   public List<Log> findIpsByTimeAndIpAddress(Date startDate, Date endDate, String ipAddress) {
     return (List<Log>) sessionFactory.getCurrentSession().getNamedQuery("log.findIpByTimeAndIpAddress").
         setParameter("startDate", startDate).setParameter("endDate", endDate).
         setParameter("ipAddress", ipAddress).list();
   }
   
+  @Override
   public void insertLog(Log log) {
     this.sessionFactory.getCurrentSession().save(log);
   }

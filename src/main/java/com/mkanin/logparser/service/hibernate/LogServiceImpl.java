@@ -24,8 +24,6 @@ import com.mkanin.logparser.service.LogService;
  *
  */
 @Service("logService")
-@Repository
-@Transactional
 public class LogServiceImpl implements LogService {
   
   @Autowired
@@ -57,11 +55,13 @@ public class LogServiceImpl implements LogService {
   }
   
   @Override
+  @Transactional
   public void insertLog(Log log) {
     logDao.insertLog(log);
   }
   
   @Override
+  @Transactional
   public Integer insertLogs(List<Log> logs) 
           throws SQLException {
       Integer previousLogFileNumber = findMaxLogNumber();

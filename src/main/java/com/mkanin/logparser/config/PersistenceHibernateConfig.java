@@ -86,7 +86,7 @@ public class PersistenceHibernateConfig {
   public Properties getHibernateProperties() {
       Properties properties = new Properties();
       properties.put("hibernate.dialect", hibernateDialect);
-      properties.put("hibernate.show_sql", hibernateShowSql);
+      properties.put("hibernate.show-sql", hibernateShowSql);
       properties.put("hibernate.hbm2ddl.auto", hibernateHbm2ddlAuto);
       
       return properties;

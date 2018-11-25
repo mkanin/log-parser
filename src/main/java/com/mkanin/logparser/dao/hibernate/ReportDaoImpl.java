@@ -19,7 +19,6 @@ import com.mkanin.logparser.model.Report;
  *
  */
 @Repository("reportDao")
-@Transactional
 public class ReportDaoImpl implements ReportDao {
 
   private SessionFactory sessionFactory;
@@ -39,7 +38,6 @@ public class ReportDaoImpl implements ReportDao {
   }
   
   @Override
-  @Transactional(readOnly = true)
   public Integer findMaxReportNumber() {
     Query maxLogNumberQuery = sessionFactory.getCurrentSession().getNamedQuery("report.findMaxReportNumber");
     return (Integer) maxLogNumberQuery.getSingleResult();

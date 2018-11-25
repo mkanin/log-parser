@@ -29,8 +29,6 @@ import com.mkanin.logparser.util.converter.ConverterImpl;
  *
  */
 @Service("reportService")
-@Repository
-@Transactional
 public class ReportServiceImpl implements ReportService {
   @Autowired
   private ReportDao reportDao;
@@ -51,11 +49,13 @@ public class ReportServiceImpl implements ReportService {
   }
   
   @Override
+  @Transactional
   public void insertReport(Report report) {
     reportDao.insertReport(report);
   }
   
   @Override
+  @Transactional
   public List<Report> insertReports(Date startDate, Date endDate, String duration, Integer threshold) 
       throws SQLException {
     Integer previousReportNumber = findMaxReportNumber();
